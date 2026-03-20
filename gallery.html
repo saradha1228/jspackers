@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — JS Packers and Movers</title>
+  <meta name="description" content="View our gallery of professional packing and moving work by JS Packers and Movers.">
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+</head>
+<body>
+
+<!-- ======== HEADER ======== -->
+<header>
+  <div class="nav-wrapper">
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="JS Packers and Movers Logo">
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About us</a>
+      <div class="nav-dropdown">
+        <a href="services.html">Our Services</a>
+        <div class="dropdown-menu">
+          <a href="services.html#transportation">Transportation</a>
+          <a href="services.html#loading">Loading</a>
+          <a href="services.html#unloading">Unloading</a>
+          <a href="services.html#adjusting">Adjusting</a>
+          <a href="services.html#confirmation">Confirmation</a>
+          <a href="services.html#tracking">Tracking</a>
+          <a href="services.html#delivery">Delivery</a>
+        </div>
+      </div>
+      <a href="gallery.html" class="active">Gallery</a>
+      <a href="contact.html">Contact us</a>
+    </nav>
+    <div class="nav-enquiry">
+      <button class="btn-primary" data-enquiry>Enquiry Now</button>
+    </div>
+    <button class="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About us</a>
+    <a href="services.html">Our Services</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact us</a>
+    <a href="#" data-enquiry>Enquiry Now</a>
+  </nav>
+</header>
+
+<!-- ======== PAGE HERO ======== -->
+<div class="page-hero">
+  <h1>Our Gallery</h1>
+  <p>A showcase of our professional packing and moving work</p>
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>›</span>
+    <span>Gallery</span>
+  </div>
+</div>
+
+<!-- ======== GALLERY ======== -->
+<section style="padding: 72px 0;">
+  <div class="container">
+    <h2 class="section-title">All Photos</h2>
+
+    <!-- ADD/REMOVE images in js/gallery-data.js — no need to touch this file -->
+    <div class="gallery-page-grid" id="full-gallery-grid"></div>
+
+    <!-- Empty state if no images -->
+    <p id="gallery-empty" style="display:none; text-align:center; color:#666; padding:40px 0;">
+      No photos yet. Add images to <strong>images/gallery/</strong> and update <strong>js/gallery-data.js</strong>.
+    </p>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <div class="container">
+    <div class="cta-inner">
+      <h3>Moving soon? Wait, we are on our way</h3>
+      <button class="btn-cta" data-enquiry>Enquiry Now</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======== FOOTER ======== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About us</h4>
+        <p>Packers and movers are trusted in booking packers and movers, and relevant services in India. <a href="about.html" class="readmore">Readmore</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Useful Links</h4>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About us</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="services.html">Our Support</a>
+          <a href="contact.html">Contact us</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Contact us</h4>
+        <div class="footer-contact-item">
+          <span class="icon"><i class="fa-solid fa-location-dot"></i></span>
+          <p>17, Sathya Nagar West Rd, Sathya Nagar East, Puducherry, 605013</p>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon"><i class="fa-solid fa-phone"></i></span>
+          <p><a href="tel:+919629679328" style="color:rgba(255,255,255,0.65)">+91 9629679328</a></p>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon"><i class="fa-regular fa-envelope"></i></span>
+          <p><a href="mailto:jspackersindia@gmail.com" style="color:rgba(255,255,255,0.65)">jspackersindia@gmail.com</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>Copyright &copy; 2024 <a href="index.html">jspackers.com</a> All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="float-contact">
+  <a href="tel:+919629679328" class="float-btn float-phone" title="Call us"><i class="fa-solid fa-phone"></i></a>
+  <a href="https://wa.me/919629679328" class="float-btn float-wa" title="WhatsApp us" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-close">&times;</button>
+  <img src="" alt="">
+</div>
+
+<div class="modal-overlay" id="enquiry-modal">
+  <div class="modal-box">
+    <button class="modal-close">&times;</button>
+    <h3>Send an Enquiry</h3>
+    <p>We'll get back to you within 24 hours.</p>
+    <form>
+      <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your name" required></div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXXXXXXX" required></div>
+      <div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+      <div class="form-group"><label>Service Required</label><select><option value="">Select a service</option><option>Transportation</option><option>Loading & Unloading</option><option>Packing & Moving</option><option>Vehicle Relocation</option><option>Commercial Moving</option><option>Storage</option></select></div>
+      <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your moving needs..."></textarea></div>
+      <button type="submit" class="btn-submit">Send Enquiry</button>
+    </form>
+  </div>
+</div>
+
+<script src="js/gallery-data.js"></script>
+<script src="js/main.js"></script>
+<script>
+  // Show empty state if no images defined
+  window.addEventListener('load', function() {
+    const grid = document.getElementById('full-gallery-grid');
+    const empty = document.getElementById('gallery-empty');
+    if (grid && grid.children.length === 0) {
+      empty && (empty.style.display = 'block');
+    }
+  });
+</script>
+</body>
+</html>
