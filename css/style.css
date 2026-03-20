@@ -214,13 +214,23 @@ header {
   z-index: 2;
   max-width: 540px;
 }
-.slide-logo { margin-bottom: 18px; }
-.slide-logo img {
-  height: 52px;
-  width: auto;
-  filter: brightness(0) invert(1);
-  opacity: 0.92;
+
+/* Logo inside a white box/badge */
+.slide-logo-box {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255,255,255,0.95);
+  border-radius: 10px;
+  padding: 8px 16px;
+  margin-bottom: 22px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.25);
 }
+.slide-logo-box img {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
 .slide-sub {
   font-size: 0.85rem;
   font-weight: 700;
@@ -1123,7 +1133,8 @@ footer::before {
   .slide-content { left: 20px; max-width: calc(100% - 40px); }
   .slide-title { font-size: 1.8rem; }
   .slide-desc { display: none; }
-  .slide-logo img { height: 40px; }
+  .slide-logo-box img { height: 34px; }
+  .slide-logo-box { padding: 6px 12px; margin-bottom: 14px; }
   .btn-slide-primary, .btn-slide-outline { padding: 11px 20px; font-size: 0.85rem; }
 
   .section-title { font-size: 1.5rem; margin-bottom: 32px; }
