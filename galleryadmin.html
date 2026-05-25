@@ -12,176 +12,120 @@
 
     /* ---- HEADER ---- */
     .admin-header {
-      background: #1e2d6e;
-      color: #fff;
-      padding: 14px 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      background: #1e2d6e; color: #fff; padding: 14px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
       box-shadow: 0 2px 16px rgba(0,0,0,0.18);
     }
     .admin-header .brand { display: flex; align-items: center; gap: 12px; }
     .admin-header .brand img { height: 38px; filter: brightness(0) invert(1); }
-    .admin-header .brand-text small { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.65; display: block; }
-    .admin-header .brand-text strong { font-size: 1rem; font-weight: 700; }
-    .admin-header .header-links { display: flex; gap: 20px; align-items: center; }
-    .admin-header .header-links a { color: rgba(255,255,255,0.8); font-size: 0.88rem; display: flex; align-items: center; gap: 6px; transition: color 0.2s; text-decoration: none; }
-    .admin-header .header-links a:hover { color: #fff; }
-    .badge-live { background: #cc1f1f; color: #fff; font-size: 0.65rem; font-weight: 700; padding: 2px 7px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .admin-header .brand-title { font-size: 1.05rem; font-weight: 700; letter-spacing: 0.02em; }
+    .header-links { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .header-links a { color: rgba(255,255,255,0.8); font-size: 0.88rem; display: flex; align-items: center; gap: 6px; transition: color 0.2s; text-decoration: none; }
+    .header-links a:hover { color: #fff; }
+    .btn-header { background: none; border: 1.5px solid rgba(255,255,255,0.35); color: rgba(255,255,255,0.8); padding: 7px 16px; border-radius: 8px; font-size: 0.82rem; cursor: pointer; font-family: inherit; transition: all 0.2s; }
+    .btn-header:hover { background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.6); }
+    .badge-live { background: #cc1f1f; color: #fff; font-size: 0.65rem; font-weight: 700; padding: 2px 7px; border-radius: 20px; text-transform: uppercase; }
+
+    /* ---- TOKEN OVERLAY ---- */
+    .token-overlay {
+      position: fixed; inset: 0; background: rgba(20,30,80,0.72);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 500; padding: 24px;
+    }
+    .token-card {
+      background: #fff; border-radius: 20px; padding: 48px 40px;
+      max-width: 460px; width: 100%; text-align: center;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+    }
+    .token-card .gh-icon { font-size: 2.4rem; color: #1e2d6e; margin-bottom: 18px; display: block; }
+    .token-card h2 { font-size: 1.3rem; color: #1e2d6e; margin-bottom: 8px; }
+    .token-card p { color: #777; font-size: 0.88rem; line-height: 1.7; margin-bottom: 24px; }
+    .token-card .hint { font-size: 0.78rem; color: #aaa; margin-top: 10px; margin-bottom: 0; }
+    .token-input-wrap { position: relative; }
+    .token-input-wrap input {
+      width: 100%; padding: 13px 44px 13px 16px;
+      border: 1.5px solid #e0e4f0; border-radius: 10px;
+      font-size: 0.92rem; font-family: 'Courier New', monospace;
+      color: #333; outline: none; transition: border-color 0.2s;
+    }
+    .token-input-wrap input:focus { border-color: #1e2d6e; }
+    .toggle-eye {
+      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+      background: none; border: none; color: #aaa; cursor: pointer; font-size: 0.9rem; padding: 4px;
+    }
+    .btn-connect {
+      width: 100%; background: #1e2d6e; color: #fff; border: none;
+      padding: 13px; border-radius: 10px; font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; margin-top: 14px; transition: background 0.2s; font-family: inherit;
+    }
+    .btn-connect:hover { background: #161f4e; }
 
     /* ---- MAIN ---- */
     .admin-main { max-width: 1140px; margin: 0 auto; padding: 36px 24px 60px; }
 
     /* ---- UPLOAD ZONE ---- */
     .upload-zone {
-      background: #fff;
-      border: 2.5px dashed #b0bad9;
-      border-radius: 18px;
-      padding: 52px 32px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.25s;
-      margin-bottom: 28px;
+      background: #fff; border: 2.5px dashed #b0bad9; border-radius: 18px;
+      padding: 52px 32px; text-align: center; cursor: pointer; transition: all 0.25s; margin-bottom: 28px;
     }
-    .upload-zone:hover, .upload-zone.drag-over {
-      border-color: #1e2d6e;
-      background: #f4f6fc;
-    }
+    .upload-zone:hover, .upload-zone.drag-over { border-color: #1e2d6e; background: #f4f6fc; }
     .upload-zone .upload-icon { font-size: 2.8rem; color: #1e2d6e; margin-bottom: 14px; }
     .upload-zone h3 { font-size: 1.15rem; color: #1e2d6e; font-weight: 700; margin-bottom: 6px; }
     .upload-zone p { color: #888; font-size: 0.88rem; }
     .upload-zone input[type="file"] { display: none; }
-    .btn-pick {
-      display: inline-block;
-      background: #1e2d6e;
-      color: #fff;
-      padding: 11px 30px;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-top: 18px;
-      cursor: pointer;
-      border: none;
-      transition: background 0.2s;
-      letter-spacing: 0.02em;
-    }
+    .btn-pick { display: inline-block; background: #1e2d6e; color: #fff; padding: 11px 30px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; margin-top: 18px; cursor: pointer; border: none; transition: background 0.2s; }
     .btn-pick:hover { background: #161f4e; }
 
     /* ---- STATS BAR ---- */
-    .stats-bar {
-      background: #fff;
-      border-radius: 14px;
-      padding: 18px 24px;
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      margin-bottom: 28px;
-      box-shadow: 0 2px 12px rgba(30,45,110,0.07);
-      flex-wrap: wrap;
-    }
-    .stats-bar .count-pill { background: #eef0f8; border-radius: 8px; padding: 8px 18px; font-size: 0.9rem; font-weight: 600; color: #1e2d6e; white-space: nowrap; }
-    .stats-bar .count-pill span { color: #cc1f1f; font-size: 1.15rem; }
+    .stats-bar { background: #fff; border-radius: 14px; padding: 18px 24px; display: flex; align-items: center; gap: 16px; margin-bottom: 28px; box-shadow: 0 2px 12px rgba(30,45,110,0.07); flex-wrap: wrap; }
+    .count-pill { background: #eef0f8; border-radius: 8px; padding: 8px 18px; font-size: 0.9rem; font-weight: 600; color: #1e2d6e; white-space: nowrap; }
+    .count-pill span { color: #cc1f1f; font-size: 1.15rem; }
     .storage-wrap { flex: 1; min-width: 160px; }
     .storage-label { font-size: 0.76rem; color: #999; margin-bottom: 6px; }
     .storage-track { height: 7px; background: #e0e4f0; border-radius: 6px; overflow: hidden; }
     .storage-fill { height: 100%; background: #1e2d6e; border-radius: 6px; transition: width 0.4s; }
     .storage-fill.warn { background: #cc1f1f; }
-    .btn-clear-all {
-      background: none;
-      border: 1.5px solid #cc1f1f;
-      color: #cc1f1f;
-      padding: 9px 20px;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
+    .deploy-notice {
+      display: none; align-items: center; gap: 8px;
+      background: #fff8e6; border: 1px solid #f0d080; color: #9a6800;
+      padding: 8px 16px; border-radius: 8px; font-size: 0.82rem; font-weight: 500; white-space: nowrap;
     }
+    .btn-clear-all { background: none; border: 1.5px solid #cc1f1f; color: #cc1f1f; padding: 9px 20px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
     .btn-clear-all:hover { background: #cc1f1f; color: #fff; }
 
     /* ---- IMAGE GRID ---- */
-    .admin-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-      gap: 20px;
-    }
-
-    .img-card {
-      background: #fff;
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 2px 12px rgba(30,45,110,0.07);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+    .admin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px; }
+    .img-card { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 12px rgba(30,45,110,0.07); transition: transform 0.2s, box-shadow 0.2s; }
     .img-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(30,45,110,0.13); }
-
-    .img-card .thumb { position: relative; aspect-ratio: 4/3; overflow: hidden; background: #eef0f8; }
+    .img-card .thumb { position: relative; aspect-ratio: 1; overflow: hidden; background: #eef0f8; }
     .img-card .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .img-card .del-btn {
-      position: absolute;
-      top: 8px; right: 8px;
-      background: rgba(204,31,31,0.88);
-      color: #fff;
-      border: none;
-      width: 30px; height: 30px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 0.8rem;
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
+    .img-card .del-btn { position: absolute; top: 8px; right: 8px; background: rgba(204,31,31,0.88); color: #fff; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; }
     .img-card:hover .del-btn { opacity: 1; }
-
+    .saved-badge, .pending-badge { position: absolute; bottom: 8px; left: 8px; font-size: 0.7rem; font-weight: 700; padding: 3px 9px; border-radius: 20px; display: flex; align-items: center; gap: 5px; }
+    .saved-badge { background: rgba(26,122,26,0.88); color: #fff; }
+    .pending-badge { background: rgba(154,104,0,0.88); color: #fff; }
     .img-card .card-body { padding: 12px 14px 14px; }
-    .img-card .alt-input {
-      width: 100%;
-      border: 1.5px solid #e0e4f0;
-      border-radius: 7px;
-      padding: 7px 10px;
-      font-size: 0.78rem;
-      color: #444;
-      outline: none;
-      transition: border-color 0.2s;
-      font-family: inherit;
-    }
+    .img-card .alt-input { width: 100%; border: 1.5px solid #e0e4f0; border-radius: 7px; padding: 7px 10px; font-size: 0.78rem; color: #444; outline: none; transition: border-color 0.2s; font-family: inherit; }
     .img-card .alt-input:focus { border-color: #1e2d6e; }
     .img-card .card-date { font-size: 0.68rem; color: #bbb; margin-top: 6px; }
 
     /* ---- EMPTY STATE ---- */
-    .empty-state { grid-column: 1 / -1; text-align: center; padding: 72px 0; color: #c0c8e0; }
+    .empty-state { grid-column: 1/-1; text-align: center; padding: 72px 0; color: #c0c8e0; }
     .empty-state i { font-size: 3.5rem; margin-bottom: 16px; display: block; }
     .empty-state p { font-size: 1rem; line-height: 1.7; }
 
     /* ---- PROCESSING OVERLAY ---- */
-    #procOverlay {
-      display: none;
-      position: fixed; inset: 0;
-      background: rgba(30,45,110,0.45);
-      z-index: 200;
-      align-items: center; justify-content: center;
-    }
+    #procOverlay { display: none; position: fixed; inset: 0; background: rgba(30,45,110,0.45); z-index: 200; align-items: center; justify-content: center; }
     #procOverlay.show { display: flex; }
-    .proc-box { background: #fff; border-radius: 16px; padding: 44px 60px; text-align: center; }
+    .proc-box { background: #fff; border-radius: 16px; padding: 44px 60px; text-align: center; min-width: 280px; }
     .spinner { width: 40px; height: 40px; border: 4px solid #e0e4f0; border-top-color: #1e2d6e; border-radius: 50%; animation: spin 0.75s linear infinite; margin: 0 auto; }
     @keyframes spin { to { transform: rotate(360deg); } }
     .proc-box p { margin-top: 18px; color: #666; font-size: 0.95rem; }
+    .proc-box .proc-sub { font-size: 0.8rem; color: #aaa; margin-top: 6px; }
 
     /* ---- TOAST ---- */
-    #toast {
-      position: fixed; bottom: 28px; right: 28px;
-      background: #1e2d6e; color: #fff;
-      padding: 13px 22px; border-radius: 10px;
-      font-size: 0.88rem; font-weight: 500;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.18);
-      transform: translateY(70px); opacity: 0;
-      transition: all 0.3s ease; z-index: 300;
-      max-width: 320px;
-    }
+    #toast { position: fixed; bottom: 28px; right: 28px; background: #1e2d6e; color: #fff; padding: 13px 22px; border-radius: 10px; font-size: 0.88rem; font-weight: 500; box-shadow: 0 8px 28px rgba(0,0,0,0.18); transform: translateY(70px); opacity: 0; transition: all 0.3s ease; z-index: 300; max-width: 340px; }
     #toast.show { transform: translateY(0); opacity: 1; }
     #toast.ok  { background: #1a7a1a; }
     #toast.err { background: #cc1f1f; }
@@ -200,16 +144,30 @@
 <header class="admin-header">
   <div class="brand">
     <img src="images/logo.png" alt="Logo">
-    <div class="brand-text">
-      <small>JS Packers and Movers</small>
-      <strong>Gallery Admin</strong>
-    </div>
+    <strong class="brand-title">Gallery Admin</strong>
   </div>
   <div class="header-links">
     <a href="gallery.html" target="_blank"><i class="fa-solid fa-images"></i> View Gallery <span class="badge-live">Live</span></a>
-    <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Back to Site</a>
+    <button class="btn-header" id="tokenSettingsBtn"><i class="fa-brands fa-github"></i> GitHub Token</button>
+    <button class="btn-header" id="logoutBtn">Logout</button>
+    <a href="index.html" class="header-links" style="margin-left:4px;"><i class="fa-solid fa-arrow-left"></i> Back to Site</a>
   </div>
 </header>
+
+<!-- GITHUB TOKEN OVERLAY -->
+<div class="token-overlay" id="tokenOverlay" style="display:none;">
+  <div class="token-card">
+    <i class="fa-brands fa-github gh-icon"></i>
+    <h2>Connect GitHub Repository</h2>
+    <p>Enter your GitHub Personal Access Token to save uploaded images directly into the repository so they appear on the live gallery permanently.</p>
+    <div class="token-input-wrap">
+      <input type="password" id="tokenInput" placeholder="ghp_xxxxxxxxxxxxxxxx" autocomplete="off">
+      <button class="toggle-eye" id="toggleEye" type="button"><i class="fa-solid fa-eye"></i></button>
+    </div>
+    <p class="hint">Token needs <strong>repo → Contents: Read &amp; Write</strong> permission.</p>
+    <button class="btn-connect" id="saveTokenBtn"><i class="fa-solid fa-plug"></i> Save &amp; Connect</button>
+  </div>
+</div>
 
 <!-- MAIN -->
 <main class="admin-main">
@@ -227,8 +185,11 @@
   <div class="stats-bar">
     <div class="count-pill">Photos: <span id="imgCount">0</span></div>
     <div class="storage-wrap">
-      <div class="storage-label">Storage: <strong id="storageUsed">0 KB</strong> used (browser limit ~5 MB)</div>
+      <div class="storage-label">Local storage: <strong id="storageUsed">0 KB</strong></div>
       <div class="storage-track"><div class="storage-fill" id="storageFill" style="width:0%"></div></div>
+    </div>
+    <div class="deploy-notice" id="deployNotice">
+      <i class="fa-solid fa-rotate fa-spin"></i> Deploying to live site (~2 min)…
     </div>
     <button class="btn-clear-all" id="clearBtn"><i class="fa-solid fa-trash"></i> Clear All</button>
   </div>
@@ -243,6 +204,7 @@
   <div class="proc-box">
     <div class="spinner"></div>
     <p id="procText">Processing…</p>
+    <p class="proc-sub" id="procSub"></p>
   </div>
 </div>
 
@@ -250,71 +212,171 @@
 <div id="toast"></div>
 
 <script>
-const KEY      = 'jspackersGallery';
-const MAX_W    = 1200;
-const MAX_H    = 900;
-const QUALITY  = 0.78;
+/* ===== CONFIG ===== */
+const KEY          = 'jspackersGallery';
+const GH_TOKEN_KEY = 'jspackersGHToken';
+const REPO         = 'saradha1228/jspackers';
+const API          = 'https://api.github.com/repos/' + REPO + '/contents/';
+const BRANCH       = 'main';
+const MAX_W = 1200, MAX_H = 900, QUALITY = 0.78;
 
-/* ---- storage helpers ---- */
-function load() {
-  try { return JSON.parse(localStorage.getItem(KEY) || '[]'); }
-  catch { return []; }
+/* ===== AUTH GUARD ===== */
+if (sessionStorage.getItem('adminAuth') !== 'true') {
+  window.location.replace('galleryaccess.html');
 }
+
+/* ===== LOGOUT ===== */
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  sessionStorage.removeItem('adminAuth');
+  window.location.href = 'gallery.html';
+});
+
+/* ===== GITHUB TOKEN ===== */
+const getToken = () => localStorage.getItem(GH_TOKEN_KEY) || '';
+const hasToken = () => !!getToken();
+
+// Show token overlay if no token stored
+if (!hasToken()) {
+  document.getElementById('tokenOverlay').style.display = 'flex';
+}
+
+// Save token
+document.getElementById('saveTokenBtn').addEventListener('click', () => {
+  const val = document.getElementById('tokenInput').value.trim();
+  if (!val) { return; }
+  localStorage.setItem(GH_TOKEN_KEY, val);
+  document.getElementById('tokenOverlay').style.display = 'none';
+  toast('GitHub token saved!');
+});
+
+// Settings button — reopen the overlay to update token
+document.getElementById('tokenSettingsBtn').addEventListener('click', () => {
+  document.getElementById('tokenInput').value = getToken();
+  document.getElementById('tokenOverlay').style.display = 'flex';
+});
+
+// Toggle show/hide token
+document.getElementById('toggleEye').addEventListener('click', function() {
+  const inp = document.getElementById('tokenInput');
+  const isPass = inp.type === 'password';
+  inp.type = isPass ? 'text' : 'password';
+  this.querySelector('i').className = isPass ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye';
+});
+
+/* ===== GITHUB API ===== */
+async function ghGet(path) {
+  const r = await fetch(API + path, {
+    headers: { 'Authorization': 'Bearer ' + getToken(), 'Accept': 'application/vnd.github+json' }
+  });
+  if (!r.ok) throw new Error('GitHub GET ' + r.status + ' — ' + path);
+  return r.json();
+}
+
+async function ghPut(path, body) {
+  const r = await fetch(API + path, {
+    method: 'PUT',
+    headers: { 'Authorization': 'Bearer ' + getToken(), 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!r.ok) {
+    const e = await r.json().catch(() => ({}));
+    throw new Error('GitHub PUT ' + r.status + ': ' + (e.message || path));
+  }
+  return r.json();
+}
+
+async function ghDelete(path, sha) {
+  const r = await fetch(API + path, {
+    method: 'DELETE',
+    headers: { 'Authorization': 'Bearer ' + getToken(), 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: 'Remove gallery image: ' + path.split('/').pop(), sha, branch: BRANCH })
+  });
+  if (!r.ok) throw new Error('GitHub DELETE ' + r.status);
+}
+
+function b64(str) { return btoa(unescape(encodeURIComponent(str))); }
+
+/* ===== GALLERY-DATA.JS HELPERS ===== */
+async function addEntriesToGalleryData(entries) {
+  const file = await ghGet('js/gallery-data.js');
+  const current = atob(file.content.replace(/\n/g, ''));
+  const mark = '  // Add more photos below this line:';
+  const idx = current.indexOf(mark);
+  if (idx === -1) throw new Error('Insertion point not found in gallery-data.js');
+  const lines = entries.map(e =>
+    `  { src: "images/gallery/${e.filename}", alt: "${e.alt.replace(/"/g, '\\"')}" },\n`
+  ).join('');
+  const updated = current.slice(0, idx) + lines + current.slice(idx);
+  await ghPut('js/gallery-data.js', {
+    message: entries.length > 1 ? `Add ${entries.length} gallery images` : `Add gallery image: ${entries[0].filename}`,
+    content: b64(updated), sha: file.sha, branch: BRANCH
+  });
+}
+
+async function removeEntryFromGalleryData(filename) {
+  const file = await ghGet('js/gallery-data.js');
+  const current = atob(file.content.replace(/\n/g, ''));
+  const updated = current.split('\n').filter(l => !l.includes('"images/gallery/' + filename + '"')).join('\n');
+  await ghPut('js/gallery-data.js', {
+    message: 'Remove gallery image: ' + filename,
+    content: b64(updated), sha: file.sha, branch: BRANCH
+  });
+}
+
+/* ===== LOCALSTORAGE ===== */
+function load() { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch { return []; } }
 function save(arr) {
   try { localStorage.setItem(KEY, JSON.stringify(arr)); return true; }
-  catch (e) {
-    toast(e.name === 'QuotaExceededError'
-      ? 'Storage full! Delete some images first.' : 'Save failed.', 'err');
-    return false;
-  }
+  catch(e) { toast(e.name === 'QuotaExceededError' ? 'Storage full! Delete some images.' : 'Save failed.', 'err'); return false; }
 }
 
-/* ---- toast ---- */
+/* ===== TOAST ===== */
 let toastTimer;
 function toast(msg, type = 'ok') {
   const el = document.getElementById('toast');
   el.textContent = msg;
   el.className = 'toast show ' + type;
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => el.classList.remove('show'), 3200);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 3500);
 }
 
-/* ---- stats ---- */
+/* ===== STATS ===== */
 function updateStats() {
   const images = load();
   document.getElementById('imgCount').textContent = images.length;
   const bytes = (localStorage.getItem(KEY) || '').length;
   const kb = bytes / 1024;
-  document.getElementById('storageUsed').textContent =
-    kb >= 1024 ? (kb / 1024).toFixed(2) + ' MB' : kb.toFixed(1) + ' KB';
-  const pct = Math.min(100, (bytes / (5 * 1024 * 1024)) * 100);
+  document.getElementById('storageUsed').textContent = kb >= 1024 ? (kb/1024).toFixed(2)+' MB' : kb.toFixed(1)+' KB';
+  const pct = Math.min(100, bytes / (5*1024*1024) * 100);
   const fill = document.getElementById('storageFill');
   fill.style.width = pct.toFixed(1) + '%';
   fill.classList.toggle('warn', pct > 75);
 }
 
-/* ---- render grid ---- */
+function fmtDate(ts) {
+  return new Date(ts).toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' });
+}
+
+/* ===== RENDER GRID ===== */
 function renderGrid() {
   const grid = document.getElementById('adminGrid');
   const images = load();
   grid.innerHTML = '';
-
   if (!images.length) {
-    grid.innerHTML = `<div class="empty-state">
-      <i class="fa-regular fa-images"></i>
-      <p>No images yet.<br>Upload photos above — they'll appear live on the website.</p>
-    </div>`;
-    updateStats();
-    return;
+    grid.innerHTML = `<div class="empty-state"><i class="fa-regular fa-images"></i><p>No images yet.<br>Upload photos above — they will be saved to the GitHub repository<br>and appear on the live gallery page.</p></div>`;
+    updateStats(); return;
   }
-
   images.forEach(img => {
+    const badge = img.gitPath
+      ? `<span class="saved-badge"><i class="fa-brands fa-github"></i> Saved to repo</span>`
+      : `<span class="pending-badge"><i class="fa-solid fa-clock"></i> Local only</span>`;
     const card = document.createElement('div');
     card.className = 'img-card';
     card.innerHTML = `
       <div class="thumb">
         <img src="${img.src}" alt="${img.alt}" loading="lazy">
-        <button class="del-btn" data-id="${img.id}" title="Delete image"><i class="fa-solid fa-trash"></i></button>
+        <button class="del-btn" data-id="${img.id}" title="Delete"><i class="fa-solid fa-trash"></i></button>
+        ${badge}
       </div>
       <div class="card-body">
         <input class="alt-input" type="text" value="${img.alt}" placeholder="Image description…" data-id="${img.id}">
@@ -323,34 +385,43 @@ function renderGrid() {
     grid.appendChild(card);
   });
 
-  /* delete */
   grid.querySelectorAll('.del-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (!confirm('Remove this image from the gallery?')) return;
-      save(load().filter(i => i.id !== btn.dataset.id));
-      renderGrid();
-      toast('Image removed.');
-    });
+    btn.addEventListener('click', () => deleteImage(btn.dataset.id));
   });
-
-  /* inline alt-text edit */
   grid.querySelectorAll('.alt-input').forEach(inp => {
     inp.addEventListener('change', () => {
-      const arr = load();
-      const item = arr.find(i => i.id === inp.dataset.id);
+      const arr = load(); const item = arr.find(i => i.id === inp.dataset.id);
       if (item) { item.alt = inp.value; save(arr); }
     });
   });
-
   updateStats();
 }
 
-/* ---- date helper ---- */
-function fmtDate(ts) {
-  return new Date(ts).toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' });
+/* ===== DELETE ===== */
+async function deleteImage(id) {
+  if (!confirm('Remove this image from the gallery?')) return;
+  const arr = load();
+  const item = arr.find(i => i.id === id);
+  if (!item) return;
+  save(arr.filter(i => i.id !== id));
+  renderGrid();
+  if (item.gitPath && hasToken()) {
+    try {
+      const filename = item.gitPath.split('/').pop();
+      const file = await ghGet(item.gitPath);
+      await ghDelete(item.gitPath, file.sha);
+      await removeEntryFromGalleryData(filename);
+      toast('Image deleted from repository.');
+    } catch(e) {
+      console.error(e);
+      toast('Removed locally. GitHub delete failed — delete the file manually if needed.', 'err');
+    }
+  } else {
+    toast('Image removed.');
+  }
 }
 
-/* ---- compress image via canvas ---- */
+/* ===== COMPRESS ===== */
 function compress(file) {
   return new Promise(resolve => {
     const reader = new FileReader();
@@ -371,70 +442,105 @@ function compress(file) {
   });
 }
 
-/* ---- process file list ---- */
+/* ===== PROCESS FILES ===== */
 async function processFiles(files) {
   const imgs = Array.from(files).filter(f => f.type.startsWith('image/'));
   if (!imgs.length) return;
 
-  const overlay  = document.getElementById('procOverlay');
+  const overlay = document.getElementById('procOverlay');
   const procText = document.getElementById('procText');
+  const procSub  = document.getElementById('procSub');
   overlay.classList.add('show');
 
-  const arr = load();
-  let added = 0;
-
+  /* Step 1 — compress */
+  const ready = [];
   for (let i = 0; i < imgs.length; i++) {
-    procText.textContent = `Compressing ${i + 1} of ${imgs.length}…`;
-    const src  = await compress(imgs[i]);
-    const name = imgs[i].name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
-    arr.unshift({
-      id:      Date.now() + '_' + Math.random().toString(36).slice(2, 7),
-      src,
-      alt:     name.charAt(0).toUpperCase() + name.slice(1),
-      addedAt: Date.now()
-    });
-    added++;
+    procText.textContent = `Compressing image ${i+1} of ${imgs.length}…`;
+    procSub.textContent  = imgs[i].name;
+    const src      = await compress(imgs[i]);
+    const filename = 'gallery-' + (Date.now() + i) + '.jpg';
+    const rawName  = imgs[i].name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
+    ready.push({ src, filename, alt: rawName.charAt(0).toUpperCase() + rawName.slice(1) });
   }
 
-  overlay.classList.remove('show');
-  if (save(arr)) {
-    renderGrid();
-    toast(`${added} image${added !== 1 ? 's' : ''} added to gallery!`);
+  /* Step 2 — save to localStorage immediately (instant local preview) */
+  const arr = load();
+  const newItems = ready.map(r => ({
+    id: Date.now() + '_' + Math.random().toString(36).slice(2,7),
+    src: r.src, alt: r.alt, filename: r.filename,
+    gitPath: null,
+    addedAt: Date.now()
+  }));
+  newItems.forEach(item => arr.unshift(item));
+  save(arr);
+  renderGrid();
+
+  /* Step 3 — push to GitHub */
+  if (hasToken()) {
+    try {
+      let done = 0;
+      procText.textContent = `Saving to GitHub (${done}/${ready.length})…`;
+      procSub.textContent  = 'Uploading image files…';
+
+      await Promise.all(ready.map(async r => {
+        const base64 = r.src.split(',')[1];
+        await ghPut('images/gallery/' + r.filename, {
+          message: 'Add gallery image: ' + r.filename,
+          content: base64, branch: BRANCH
+        });
+        done++;
+        procText.textContent = `Saving to GitHub (${done}/${ready.length})…`;
+      }));
+
+      procText.textContent = 'Updating gallery list…';
+      procSub.textContent  = 'Editing gallery-data.js';
+      await addEntriesToGalleryData(ready.map(r => ({ filename: r.filename, alt: r.alt })));
+
+      /* mark items as gitSaved */
+      const arr2 = load();
+      newItems.forEach(item => {
+        const stored = arr2.find(i => i.filename === item.filename);
+        if (stored) stored.gitPath = 'images/gallery/' + item.filename;
+      });
+      save(arr2);
+      renderGrid();
+
+      overlay.classList.remove('show');
+
+      const notice = document.getElementById('deployNotice');
+      notice.style.display = 'flex';
+      setTimeout(() => { notice.style.display = 'none'; }, 150000);
+
+      toast(ready.length + ' image' + (ready.length > 1 ? 's' : '') + ' saved to GitHub! Live in ~2 min after Netlify deploys.');
+    } catch(e) {
+      overlay.classList.remove('show');
+      console.error('GitHub upload error:', e);
+      toast('Saved locally. GitHub upload failed: ' + e.message + '. Check your token.', 'err');
+    }
+  } else {
+    overlay.classList.remove('show');
+    toast(ready.length + ' image(s) saved locally only. Add a GitHub token to make them permanent.', 'err');
   }
 }
 
-/* ---- upload zone events ---- */
+/* ===== UPLOAD ZONE ===== */
 const zone  = document.getElementById('uploadZone');
 const input = document.getElementById('fileInput');
-
 input.addEventListener('change', e => { if (e.target.files.length) processFiles(e.target.files); input.value = ''; });
 zone.addEventListener('dragover',  e => { e.preventDefault(); zone.classList.add('drag-over'); });
 zone.addEventListener('dragleave', ()  => zone.classList.remove('drag-over'));
-zone.addEventListener('drop', e => {
-  e.preventDefault(); zone.classList.remove('drag-over');
-  if (e.dataTransfer.files.length) processFiles(e.dataTransfer.files);
-});
+zone.addEventListener('drop', e => { e.preventDefault(); zone.classList.remove('drag-over'); if (e.dataTransfer.files.length) processFiles(e.dataTransfer.files); });
 
-/* ---- clear all ---- */
+/* ===== CLEAR ALL ===== */
 document.getElementById('clearBtn').addEventListener('click', () => {
   if (!load().length) { toast('Gallery is already empty.', 'err'); return; }
-  if (!confirm('Remove ALL uploaded images from the gallery? This cannot be undone.')) return;
+  if (!confirm('Remove ALL uploaded images from local storage?\n\nNote: This does NOT delete images already pushed to GitHub.')) return;
   localStorage.removeItem(KEY);
   renderGrid();
-  toast('All images cleared.', 'err');
+  toast('Local cache cleared.', 'err');
 });
 
-/* ---- auth guard ---- */
-if (sessionStorage.getItem('adminAuth') !== 'true') {
-  window.location.replace('galleryaccess.html');
-}
-
-/* ---- logout ---- */
-document.querySelector('.header-links a[href="index.html"]').insertAdjacentHTML('beforebegin',
-  '<button onclick="sessionStorage.removeItem(\'adminAuth\');window.location.href=\'gallery.html\';" style="background:none;border:1.5px solid rgba(255,255,255,0.35);color:rgba(255,255,255,0.8);padding:7px 16px;border-radius:8px;font-size:0.82rem;cursor:pointer;font-family:inherit;">Logout</button>'
-);
-
-/* ---- init ---- */
+/* ===== INIT ===== */
 renderGrid();
 </script>
 </body>

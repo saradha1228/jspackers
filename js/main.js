@@ -193,10 +193,17 @@ function initSlider({ containerSel, slidesSel, dotsSel, prevSel, nextSel, autopl
 
 /* =============================================
    ADMIN GALLERY — read from localStorage
+   Filters out items already deployed to gallery-data.js
+   to prevent duplicates after Netlify redeploys.
    ============================================= */
 function getAdminGalleryImages() {
   try {
-    return JSON.parse(localStorage.getItem('jspackersGallery') || '[]')
+    const items = JSON.parse(localStorage.getItem('jspackersGallery') || '[]');
+    const deployed = new Set(
+      (typeof galleryImages !== 'undefined' ? galleryImages : []).map(i => i.src)
+    );
+    return items
+      .filter(i => !i.gitPath || !deployed.has(i.gitPath))
       .map(i => ({ src: i.src, alt: i.alt }));
   } catch { return []; }
 }
