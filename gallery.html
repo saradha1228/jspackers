@@ -66,7 +66,12 @@
 <!-- ======== GALLERY ======== -->
 <section style="padding: 72px 0;">
   <div class="container">
-    <h2 class="section-title">All Photos</h2>
+    <div style="position:relative; display:flex; align-items:center; justify-content:center; margin-bottom:48px;">
+      <h2 style="font-size:2rem;font-weight:700;color:#1e2d6e;">All Photos</h2>
+      <a href="galleryaccess.html" title="Gallery Admin" style="position:absolute;right:0;display:inline-flex;align-items:center;gap:7px;background:#1e2d6e;color:#fff;padding:9px 18px;border-radius:8px;font-size:0.82rem;font-weight:600;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#161f4e'" onmouseout="this.style.background='#1e2d6e'">
+        <i class="fa-solid fa-lock"></i> Admin
+      </a>
+    </div>
 
     <!-- ADD/REMOVE images in js/gallery-data.js — no need to touch this file -->
     <div class="gallery-page-grid" id="full-gallery-grid"></div>
@@ -77,6 +82,20 @@
     </p>
   </div>
 </section>
+
+<!-- FEATURES STRIP -->
+<div class="features-strip">
+  <div class="container">
+    <div class="features-list">
+      <span>24/7 Services Support</span>
+      <span>100% safe Delivery and Insurance</span>
+      <span>Local &amp; Long distance Moving</span>
+      <span>Packing Material</span>
+      <span>Storage Services</span>
+      <span>Commercial Moving</span>
+    </div>
+  </div>
+</div>
 
 <!-- CTA -->
 <div class="cta-banner">
@@ -146,11 +165,11 @@
     <h3>Send an Enquiry</h3>
     <p>We'll get back to you within 24 hours.</p>
     <form>
-      <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your name" required></div>
-      <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXXXXXXX" required></div>
-      <div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com"></div>
-      <div class="form-group"><label>Service Required</label><select><option value="">Select a service</option><option>Transportation</option><option>Loading & Unloading</option><option>Packing & Moving</option><option>Vehicle Relocation</option><option>Commercial Moving</option><option>Storage</option></select></div>
-      <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your moving needs..."></textarea></div>
+      <div class="form-group"><label>Full Name</label><input type="text" name="name" placeholder="Your name" required></div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" name="phone" placeholder="+91 XXXXXXXXXX" required></div>
+      <div class="form-group"><label>Email</label><input type="email" name="email" placeholder="your@email.com"></div>
+      <div class="form-group"><label>Service Required</label><select name="service"><option value="">Select a service</option><option>Transportation</option><option>Loading & Unloading</option><option>Packing & Moving</option><option>Vehicle Relocation</option><option>Commercial Moving</option><option>Storage</option></select></div>
+      <div class="form-group"><label>Message</label><textarea name="message" placeholder="Tell us about your moving needs..."></textarea></div>
       <button type="submit" class="btn-submit">Send Enquiry</button>
     </form>
   </div>

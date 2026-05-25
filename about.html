@@ -51,7 +51,7 @@
   <div class="container">
 
     <div class="about-page-img">
-      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80" alt="JS Packers and Movers team at work" loading="lazy">
+      <img src="images/Designer.png" alt="JS Packers and Movers team at work" loading="lazy">
     </div>
 
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;">
@@ -116,17 +116,18 @@
   </div>
 </section>
 
-<!-- Stats -->
-<section id="stats">
+<div class="features-strip">
   <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item"><div class="stat-number" data-target="15" data-suffix="+">15+</div><div class="stat-label">Services</div></div>
-      <div class="stat-item"><div class="stat-number" data-target="2000" data-suffix="">2,000</div><div class="stat-label">Customers</div></div>
-      <div class="stat-item"><div class="stat-number" data-target="50" data-suffix="+">50+</div><div class="stat-label">Employees</div></div>
-      <div class="stat-item"><div class="stat-number" data-target="9" data-suffix="+">9+</div><div class="stat-label">Years of Experience</div></div>
+    <div class="features-list">
+      <span>24/7 Services Support</span>
+      <span>100% safe Delivery and Insurance</span>
+      <span>Local &amp; Long distance Moving</span>
+      <span>Packing Material</span>
+      <span>Storage Services</span>
+      <span>Commercial Moving</span>
     </div>
   </div>
-</section>
+</div>
 
 <div class="cta-banner">
   <div class="container">
@@ -163,11 +164,11 @@
     <button class="modal-close">&times;</button>
     <h3>Send an Enquiry</h3><p>We'll get back to you within 24 hours.</p>
     <form>
-      <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your name" required></div>
-      <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXXXXXXX" required></div>
-      <div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com"></div>
-      <div class="form-group"><label>Service Required</label><select><option value="">Select a service</option><option>Transportation</option><option>Loading & Unloading</option><option>Packing & Moving</option><option>Vehicle Relocation</option><option>Commercial Moving</option><option>Storage</option></select></div>
-      <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your moving needs..."></textarea></div>
+      <div class="form-group"><label>Full Name</label><input type="text" name="name" placeholder="Your name" required></div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" name="phone" placeholder="+91 XXXXXXXXXX" required></div>
+      <div class="form-group"><label>Email</label><input type="email" name="email" placeholder="your@email.com"></div>
+      <div class="form-group"><label>Service Required</label><select name="service"><option value="">Select a service</option><option>Transportation</option><option>Loading & Unloading</option><option>Packing & Moving</option><option>Vehicle Relocation</option><option>Commercial Moving</option><option>Storage</option></select></div>
+      <div class="form-group"><label>Message</label><textarea name="message" placeholder="Tell us about your moving needs..."></textarea></div>
       <button type="submit" class="btn-submit">Send Enquiry</button>
     </form>
   </div>

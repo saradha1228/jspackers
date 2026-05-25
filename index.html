@@ -64,9 +64,6 @@
   <div class="slide">
     <div class="slide-bg" style="background-image:url('images/banner1.jpg')"></div>
     <div class="slide-content">
-      <div class="slide-logo-box">
-        <img src="images/logo.png" alt="JS Packers and Movers">
-      </div>
       <p class="slide-sub">Trusted Relocation Experts</p>
       <h1 class="slide-title">Expert Packing,<br>Zero Damage</h1>
       <p class="slide-desc">Our trained team carefully wraps &amp; packs every item — furniture, fragile goods &amp; more.</p>
@@ -81,9 +78,6 @@
   <div class="slide">
     <div class="slide-bg" style="background-image:url('images/banner2.jpg')"></div>
     <div class="slide-content">
-      <div class="slide-logo-box">
-        <img src="images/logo.png" alt="JS Packers and Movers">
-      </div>
       <p class="slide-sub">Pan India Moving Service</p>
       <h1 class="slide-title">We Move Your<br>World Safely</h1>
       <p class="slide-desc">From loading to final delivery — our crew handles every step of your relocation.</p>
@@ -98,9 +92,6 @@
   <div class="slide">
     <div class="slide-bg" style="background-image:url('images/banner3.jpg')"></div>
     <div class="slide-content">
-      <div class="slide-logo-box">
-        <img src="images/logo.png" alt="JS Packers and Movers">
-      </div>
       <p class="slide-sub">Heavy &amp; Fragile Handling</p>
       <h1 class="slide-title">Strong Hands,<br>Safe Delivery</h1>
       <p class="slide-desc">Specialized equipment &amp; trained movers for heavy furniture, appliances &amp; vehicles.</p>
@@ -193,16 +184,35 @@
   <div class="container">
     <h2 class="how-title">Ready to make your move a whole lot easier?</h2>
 
-    <div class="how-slider">
-
-      <!-- Floating icons (always visible, above all slides) -->
-      <div class="floating-icons">
-        <div class="float-icon" style="left:22%; top:8%">  <i class="fa-solid fa-circle-info"></i></div>
-        <div class="float-icon" style="left:38%; top:2%">  <i class="fa-solid fa-clipboard"></i></div>
-        <div class="float-icon" style="left:54%; top:10%"> <i class="fa-solid fa-arrow-down-to-bracket"></i></div>
-        <div class="float-icon" style="left:65%; top:2%">  <i class="fa-solid fa-location-dot"></i></div>
-        <div class="float-icon" style="left:78%; top:12%"> <i class="fa-solid fa-house"></i></div>
+    <!-- Step indicator bar -->
+    <div class="how-steps-bar">
+      <div class="how-step-item" data-index="0">
+        <div class="how-step-circle"><i class="fa-solid fa-circle-info"></i></div>
+        <span>Enquiry</span>
       </div>
+      <div class="how-step-line"></div>
+      <div class="how-step-item" data-index="1">
+        <div class="how-step-circle"><i class="fa-solid fa-clipboard"></i></div>
+        <span>Estimation</span>
+      </div>
+      <div class="how-step-line"></div>
+      <div class="how-step-item" data-index="2">
+        <div class="how-step-circle"><i class="fa-solid fa-calendar-check"></i></div>
+        <span>Booking</span>
+      </div>
+      <div class="how-step-line"></div>
+      <div class="how-step-item" data-index="3">
+        <div class="how-step-circle"><i class="fa-solid fa-truck-moving"></i></div>
+        <span>Transport</span>
+      </div>
+      <div class="how-step-line"></div>
+      <div class="how-step-item" data-index="4">
+        <div class="how-step-circle"><i class="fa-solid fa-house"></i></div>
+        <span>Delivery</span>
+      </div>
+    </div>
+
+    <div class="how-slider">
 
       <!-- Slide 1: Enquiry -->
       <div class="how-slide">
@@ -276,7 +286,7 @@
   <div class="container">
     <div class="about-grid">
       <div class="about-img">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80" alt="Packers and movers professionals" loading="lazy">
+        <img src="images/Designer.png" alt="Packers and movers professionals" loading="lazy">
       </div>
       <div class="about-text">
         <h2>About us</h2>
@@ -460,19 +470,19 @@
     <form>
       <div class="form-group">
         <label>Full Name</label>
-        <input type="text" placeholder="Your name" required>
+        <input type="text" name="name" placeholder="Your name" required>
       </div>
       <div class="form-group">
         <label>Phone Number</label>
-        <input type="tel" placeholder="+91 XXXXXXXXXX" required>
+        <input type="tel" name="phone" placeholder="+91 XXXXXXXXXX" required>
       </div>
       <div class="form-group">
         <label>Email</label>
-        <input type="email" placeholder="your@email.com">
+        <input type="email" name="email" placeholder="your@email.com">
       </div>
       <div class="form-group">
         <label>Service Required</label>
-        <select>
+        <select name="service">
           <option value="">Select a service</option>
           <option>Transportation</option>
           <option>Loading & Unloading</option>
@@ -484,7 +494,7 @@
       </div>
       <div class="form-group">
         <label>Message</label>
-        <textarea placeholder="Tell us about your moving needs..."></textarea>
+        <textarea name="message" placeholder="Tell us about your moving needs..."></textarea>
       </div>
       <button type="submit" class="btn-submit">Send Enquiry</button>
     </form>

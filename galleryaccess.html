@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Access — JS Packers and Movers</title>
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #1e2d6e;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    /* background pattern */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(204,31,31,0.18) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(30,45,110,0.5) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 48px 44px 44px;
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-wrap {
+      width: 80px;
+      height: 80px;
+      background: #1e2d6e;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      box-shadow: 0 8px 24px rgba(30,45,110,0.3);
+    }
+    .logo-wrap img { width: 52px; height: 52px; object-fit: contain; filter: brightness(0) invert(1); }
+
+    h1 { font-size: 1.4rem; font-weight: 700; color: #1e2d6e; margin-bottom: 6px; }
+    .subtitle { color: #888; font-size: 0.88rem; margin-bottom: 32px; line-height: 1.5; }
+
+    .input-wrap {
+      position: relative;
+      margin-bottom: 16px;
+    }
+    .input-wrap i {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+    .input-wrap input {
+      width: 100%;
+      padding: 14px 16px 14px 42px;
+      border: 1.5px solid #e0e4f0;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      color: #333;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      font-family: inherit;
+    }
+    .input-wrap input:focus {
+      border-color: #1e2d6e;
+      box-shadow: 0 0 0 3px rgba(30,45,110,0.1);
+    }
+    .input-wrap input.shake {
+      animation: shake 0.4s ease;
+      border-color: #cc1f1f;
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%       { transform: translateX(-8px); }
+      40%       { transform: translateX(8px); }
+      60%       { transform: translateX(-6px); }
+      80%       { transform: translateX(6px); }
+    }
+
+    .btn-access {
+      width: 100%;
+      background: #1e2d6e;
+      color: #fff;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      font-family: inherit;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-access:hover { background: #161f4e; }
+    .btn-access:active { transform: scale(0.98); }
+    .btn-access:disabled { background: #aab0c8; cursor: not-allowed; transform: none; }
+
+    .error-msg {
+      background: #fff0f0;
+      border: 1px solid #f5c0c0;
+      color: #cc1f1f;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      margin-top: 14px;
+      display: none;
+    }
+    .error-msg.show { display: block; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #aaa;
+      font-size: 0.82rem;
+      text-decoration: none;
+      margin-top: 24px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #1e2d6e; }
+
+    /* lock icon animated */
+    .lock-icon {
+      font-size: 1.8rem;
+      color: #cc1f1f;
+      margin-bottom: 16px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo-wrap">
+    <img src="images/logo.png" alt="JS Packers Logo">
+  </div>
+
+  <i class="fa-solid fa-lock lock-icon"></i>
+  <h1>Gallery Admin</h1>
+  <p class="subtitle">Enter the admin email address<br>to access the gallery management panel.</p>
+
+  <form id="accessForm" autocomplete="off">
+    <div class="input-wrap">
+      <i class="fa-solid fa-envelope"></i>
+      <input type="email" id="emailInput" placeholder="Admin email address" required autofocus>
+    </div>
+    <button type="submit" class="btn-access" id="accessBtn">
+      <i class="fa-solid fa-arrow-right-to-bracket"></i> Access Admin Panel
+    </button>
+    <div class="error-msg" id="errorMsg">
+      <i class="fa-solid fa-circle-xmark"></i> Access denied. Email address not recognised.
+    </div>
+  </form>
+
+  <a href="gallery.html" class="back-link">
+    <i class="fa-solid fa-arrow-left"></i> Back to Gallery
+  </a>
+</div>
+
+<script>
+  const ADMIN_EMAIL = 'jspackersindia@gmail.com';
+
+  // Already authenticated? Skip the login page
+  if (sessionStorage.getItem('adminAuth') === 'true') {
+    window.location.replace('galleryadmin.html');
+  }
+
+  document.getElementById('accessForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const input  = document.getElementById('emailInput');
+    const btn    = document.getElementById('accessBtn');
+    const errMsg = document.getElementById('errorMsg');
+    const entered = input.value.trim().toLowerCase();
+
+    if (entered === ADMIN_EMAIL) {
+      sessionStorage.setItem('adminAuth', 'true');
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Verifying…';
+      btn.disabled = true;
+      setTimeout(() => window.location.replace('galleryadmin.html'), 600);
+    } else {
+      errMsg.classList.add('show');
+      input.classList.add('shake');
+      setTimeout(() => input.classList.remove('shake'), 450);
+      input.select();
+    }
+  });
+
+  // Hide error on new input
+  document.getElementById('emailInput').addEventListener('input', function() {
+    document.getElementById('errorMsg').classList.remove('show');
+  });
+</script>
+</body>
+</html>

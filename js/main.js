@@ -23,14 +23,24 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // ---- HOW-IT-WORKS SLIDER ----
-  initSlider({
+  const howStepItems = Array.from(document.querySelectorAll('.how-step-item'));
+  function syncHowStep(index) {
+    howStepItems.forEach((el, i) => el.classList.toggle('active', i === index));
+  }
+  if (howStepItems.length) syncHowStep(0);
+
+  const howGoTo = initSlider({
     containerSel: '.how-slider',
     slidesSel: '.how-slide',
     dotsSel: '.how-dots',
     prevSel: '.how-prev',
     nextSel: '.how-next',
     autoplay: true,
-    interval: 3800
+    interval: 3800,
+    onSlideChange: syncHowStep
+  });
+  howStepItems.forEach((el, i) => {
+    el.addEventListener('click', () => howGoTo && howGoTo(i));
   });
 
   // ---- TESTIMONIALS SLIDER ----
@@ -127,12 +137,12 @@ function initTestimonialsSlider() {
 /* =============================================
    SLIDER FACTORY
    ============================================= */
-function initSlider({ containerSel, slidesSel, dotsSel, prevSel, nextSel, autoplay, interval }) {
+function initSlider({ containerSel, slidesSel, dotsSel, prevSel, nextSel, autoplay, interval, onSlideChange }) {
   const container = document.querySelector(containerSel);
-  if (!container) return;
+  if (!container) return null;
 
   const slides = Array.from(container.querySelectorAll(':scope > .slide, :scope > .how-slide, :scope > .test-slide'));
-  if (slides.length === 0) return;
+  if (slides.length === 0) return null;
 
   let current = 0;
   let timer = null;
@@ -155,6 +165,7 @@ function initSlider({ containerSel, slidesSel, dotsSel, prevSel, nextSel, autopl
     current = (n + slides.length) % slides.length;
     slides[current].classList.add('active');
     if (dotsContainer) dotsContainer.querySelectorAll('.dot')[current]?.classList.add('active');
+    if (onSlideChange) onSlideChange(current);
   }
 
   function next() { goTo(current + 1); }
@@ -177,6 +188,17 @@ function initSlider({ containerSel, slidesSel, dotsSel, prevSel, nextSel, autopl
 
   // Initialise first slide
   slides[0].classList.add('active');
+  return goTo;
+}
+
+/* =============================================
+   ADMIN GALLERY — read from localStorage
+   ============================================= */
+function getAdminGalleryImages() {
+  try {
+    return JSON.parse(localStorage.getItem('jspackersGallery') || '[]')
+      .map(i => ({ src: i.src, alt: i.alt }));
+  } catch { return []; }
 }
 
 /* =============================================
@@ -186,7 +208,8 @@ function renderHomeGallery() {
   const grid = document.getElementById('home-gallery-grid');
   if (!grid || typeof galleryImages === 'undefined') return;
 
-  const toShow = galleryImages.slice(0, 8);
+  const combined = [...getAdminGalleryImages(), ...galleryImages];
+  const toShow = combined.slice(0, 8);
 
   // Pad to 8 if fewer images
   const padded = [...toShow];
@@ -219,7 +242,8 @@ function renderFullGallery() {
   const grid = document.getElementById('full-gallery-grid');
   if (!grid || typeof galleryImages === 'undefined') return;
 
-  galleryImages.forEach((img) => {
+  const combined = [...getAdminGalleryImages(), ...galleryImages];
+  combined.forEach((img) => {
     const item = document.createElement('div');
     item.className = 'gallery-item gallery-page-grid-item';
     item.innerHTML = `<img src="${img.src}" alt="${img.alt}" loading="lazy">`;
@@ -311,14 +335,32 @@ function setupEnquiryModal() {
   form && form.addEventListener('submit', (e) => {
     e.preventDefault();
     const btn = form.querySelector('.btn-submit');
-    btn.textContent = 'Sent! We\'ll contact you soon ✓';
-    btn.style.background = '#2ab514';
-    setTimeout(() => {
-      overlay.classList.remove('open');
-      btn.textContent = 'Send Enquiry';
-      btn.style.background = '';
-      form.reset();
-    }, 2500);
+    const origText = btn.textContent;
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    fetch('https://formsubmit.co/ajax/jspackersindia@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(Object.fromEntries(new FormData(form)))
+    })
+    .then(res => res.json())
+    .then(() => {
+      btn.textContent = 'Sent! We\'ll contact you soon ✓';
+      btn.style.background = '#2ab514';
+      btn.disabled = false;
+      setTimeout(() => {
+        overlay.classList.remove('open');
+        btn.textContent = origText;
+        btn.style.background = '';
+        form.reset();
+      }, 2500);
+    })
+    .catch(() => {
+      btn.textContent = 'Failed to send — please call us';
+      btn.style.background = '#cc1f1f';
+      btn.disabled = false;
+      setTimeout(() => { btn.textContent = origText; btn.style.background = ''; }, 3500);
+    });
   });
 }
 
